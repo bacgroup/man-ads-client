@@ -1,5 +1,5 @@
 node("x2go") {
 
-echo "Build"
+sh "ls -l"
 
 }
