@@ -34,7 +34,7 @@ public final class Constants {
 	public static final String PATH_DESKTOP = (OSTools.isWindows()) ? ((OSTools.is_applet) ? WindowsPaths.getDesktopPath() : WindowsRegistryPaths.getDesktopPath()) : LinuxPaths.getDesktopPath();
 	public static final String PATH_DOCUMENT = (OSTools.isWindows()) ? WindowsPaths.getPersonalDataPath() : LinuxPaths.getDocumentPath();
 
-	public static final String FILENAME_LAUNCHER = "java"+((OSTools.isWindows()) ? ".exe" : "")+" -jar ovdIntegratedLauncher.jar";
+	public static final String FILENAME_LAUNCHER = "ovdIntegratedLauncher.jar";
 	public static String JAVA_LAUNCHER; 
 	
 	public static final String PATH_CONF = ((OSTools.isWindows()) ? WindowsPaths.getAppDataPath()+Constants.FILE_SEPARATOR : Constants.HOMEDIR+Constants.FILE_SEPARATOR+".") + "ulteo";
