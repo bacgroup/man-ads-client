@@ -13,7 +13,12 @@ node("x2go") {
         sh "ant ovdIntegratedLauncher.jar"
     }
     dir("client/java/jars") {
-    archiveArtifacts '*.jar'
+        archiveArtifacts '*.jar'
+    }
+    dir("client/OVDIntegratedLauncher"){
+        sh "./autogen"
+        sh "make"
+        archiveArtifacts 'UlteoOVDIntegratedLauncher'
     }
   }
 }
