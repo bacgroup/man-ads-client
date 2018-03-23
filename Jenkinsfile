@@ -1,5 +1,6 @@
 node("x2go") {
-
-sh "ls -l"
-
+  checkout scm
+  stage("Build Java Client") {
+      sh "ls -la"
+  }
 }
