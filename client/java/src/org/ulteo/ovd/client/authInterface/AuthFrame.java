@@ -41,6 +41,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.FlowLayout;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -170,10 +171,11 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 		this.optionClicked = false;
 
 		this.setVisible(false);
-		this.setTitle("OVD Native Client");
+		this.setTitle("MAN OVD Native Client");
 		this.setSize(500,450);
 		this.setResizable(false);
-		this.setBackground(Color.white);
+		this.setBackground(Color.WHITE);
+                this.getContentPane().setBackground(Color.WHITE);
 		
 		frameLogo = this.getToolkit().getImage(getClass().getClassLoader().getResource("pics/ulteo.png"));
 		this.setIconImage(frameLogo);
@@ -187,7 +189,7 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
-		startButton.setPreferredSize(new Dimension(150, 25));
+		startButton.setPreferredSize(new Dimension(330, 25));
 
 		this.initResolutionSlider(resolution_);
 
@@ -221,10 +223,11 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 		// First line: logo & bug reporter
 		gbc.gridy = gbc.gridx = 0;
 		gbc.insets = new Insets(7, 7, 25, 0);
-		gbc.gridwidth = 2;
-		gbc.anchor = GridBagConstraints.NORTHWEST;
+		gbc.gridwidth = 4;
+		//gbc.anchor = GridBagConstraints.NORTHWEST;
 		gbc.weightx = 1;
 		gbc.weighty = 1;
+                gbc.fill = GridBagConstraints.HORIZONTAL;
 		this.add(logoLabel, gbc);
 		
 		if (this.showBugReporter) {
@@ -246,12 +249,14 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 		gbc.fill = GridBagConstraints.NONE;
 		gbc.insets = new Insets(0, 0, 5, 0);
 		this.add(userLogoLabel, gbc);
-		
+		userLogoLabel.setVisible(false);
+
 		gbc.gridx = 1;
 		gbc.anchor = GridBagConstraints.LINE_START;
 		gbc.insets.left = 5;
 		this.add(login, gbc);
-		
+		login.setVisible(false);
+
 		gbc.gridx = 2;
 		gbc.gridwidth = 0;
 		gbc.gridheight = 1;
@@ -262,7 +267,8 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 		gbc.weighty = 0;
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		this.add(loginTextField, gbc);
-		
+		loginTextField.setVisible(false);
+
 		// Password line
 		gbc.gridy = pos++;
 		
@@ -273,11 +279,13 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 		gbc.fill = GridBagConstraints.NONE;
 		gbc.insets = new Insets(0, 0, 5, 0);
 		this.add(passwordLogoLabel, gbc);
+		passwordLogoLabel.setVisible(false);
 
 		gbc.gridx = 1;
 		gbc.anchor = GridBagConstraints.LINE_START;
 		gbc.insets.left = 5;
 		this.add(password, gbc);
+		password.setVisible(false);
 
 		gbc.gridx = 2;
 		gbc.gridwidth = 0;
@@ -289,7 +297,8 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 		gbc.weighty = 0;
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		this.add(passwordTextField, gbc);
-		
+		passwordTextField.setVisible(false);
+
 		// use local creds line
 		if (! this.isGUILocked) {
 			if (this.displayUserLocalCredentials) {
@@ -317,12 +326,14 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 			gbc.fill = GridBagConstraints.NONE;
 			gbc.insets = new Insets(0, 0, 5, 0);
 			this.add(hostLogoLabel, gbc);
-			
+			hostLogoLabel.setVisible(false);
+
 			gbc.gridx = 1;
 			gbc.anchor = GridBagConstraints.LINE_START;
 			gbc.insets.left = 5;
 			this.add(host, gbc);
-			
+			host.setVisible(false);
+
 			gbc.gridx = 2;
 			gbc.gridwidth = 0;
 			gbc.gridheight = 1;
@@ -333,11 +344,13 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 			gbc.weighty = 0;
 			gbc.fill = GridBagConstraints.HORIZONTAL;
 			this.add(serverTextField, gbc);
-			
+			serverTextField.setVisible(false);
+
 			// RememberMe line
 			gbc.gridy = pos++;
 			gbc.anchor = GridBagConstraints.CENTER;
 			this.add(rememberMe, gbc);
+                        rememberMe.setVisible(false);
 		}
 		
 		// Start button line
@@ -347,16 +360,17 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 		gbc.anchor = GridBagConstraints.LINE_START;
 		gbc.gridwidth = 1;
 		gbc.fill = GridBagConstraints.NONE;
-		this.add(startButton, gbc);
+		//this.add(startButton, gbc);
 
 		if (! this.isGUILocked) {
 			// More option button
 			gbc.gridwidth = GridBagConstraints.REMAINDER;
 			gbc.gridheight = GridBagConstraints.REMAINDER;
 			gbc.insets.top = 25;
-			gbc.gridx = 0;
+			gbc.gridx = 3;
 			gbc.gridy = 15;
-			this.add(moreOption, gbc);
+			//this.add(moreOption, gbc);
+			this.add(startButton, gbc);
 		}
 		
 		this.initKeyActions();
@@ -366,6 +380,16 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.showWindow();
+                try {
+                    	SwingTools.invokeAndWait(new MoreOptionsAction(this));
+                    	this.optionClicked = true;
+                        this.toggleSessionMode();
+                    } catch (InterruptedException ex) {
+                        org.ulteo.Logger.error("More options components adding was interrupted: "+ex.getMessage());
+                    } catch (InvocationTargetException ex) {
+                    org.ulteo.Logger.error("Failed to add more options components: "+ex.getMessage());
+                }
+
 	}
 
 	private void initKeyActions() {
@@ -431,6 +455,7 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 	}
 
 	public void run() {
+                //System.out.println("Wow: "+optionClicked+" "+this.getJob());
 		int job = this.getJob();
 		
 		if (job == JOB_NOTHING)
@@ -520,6 +545,7 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 			gbc.anchor = GridBagConstraints.LINE_START;
 			gbc.fill = GridBagConstraints.NONE;
 			componentList.add(this.autoPublish);
+                        this.autoPublish.setVisible(false);
 			gbcToAdd.add((GridBagConstraints) gbc.clone());
 		}
 		
@@ -531,7 +557,7 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 			gbcToAdd.add((GridBagConstraints) gbc.clone());
 			
 			gbc.anchor = GridBagConstraints.LINE_START;
-			gbc.gridx = 2;
+			gbc.gridx = 3;
 			gbc.gridy = 11;
 			gbc.gridwidth = 1;
 			gbc.fill = GridBagConstraints.NONE;
@@ -1010,7 +1036,7 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 	public void changeLanguage() {
 		this.login.setText(I18n._("Login"));
 		this.password.setText(I18n._("Password"));
-		this.startButton.setText(I18n._("Start!"));
+		this.startButton.setText(I18n._("Login!"));
 
 		if (! isGUILocked) {
 			this.host.setText(I18n._("Server"));

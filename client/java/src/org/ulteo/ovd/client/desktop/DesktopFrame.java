@@ -69,7 +69,7 @@ public class DesktopFrame extends OvdClientFrame implements InputListener {
 		setIconImage(logo);
 		setSize(resolution);
 		setPreferredSize(resolution);
-		this.setTitle("Ulteo Remote Desktop");
+		this.setTitle("MAN Remote Desktop");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setLocation(0, 0);

@@ -61,7 +61,7 @@ public class BugReportPopup extends JDialog {
 	}
 
 	private void initWindow() {
-		this.setTitle(I18n._("Ulteo OVD Bug Report"));
+		this.setTitle(I18n._("MAN OVD Bug Report"));
 		GUIActions.setIconImage(this, null).run();
 
 		this.addWindowListener(new WindowAdapter() {

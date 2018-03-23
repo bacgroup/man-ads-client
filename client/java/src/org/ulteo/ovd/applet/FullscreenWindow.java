@@ -40,7 +40,7 @@ public class FullscreenWindow extends JFrame implements WindowListener {
 
 		this.client = client_;
 
-		this.setTitle("Ulteo Remote Desktop");
+		this.setTitle("MAN Remote Desktop");
 		GUIActions.setIconImage(this, null).run();
 		
 		this.setUndecorated(true);
