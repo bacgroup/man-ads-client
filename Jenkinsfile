@@ -7,7 +7,7 @@ node("x2go") {
       sh "keytool -selfcert -keystore client/java/certificate/keystore -alias ulteo -storepass 123456 -keypass 123456"
   }
   stage("Build") {
-    dir("cd client/java/") {
+    dir("client/java/") {
         sh "./autogen"
         sh "ant ovdNativeClient.jar"
         sh "ant ovdIntegratedLauncher.jar"
