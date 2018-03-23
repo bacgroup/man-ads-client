@@ -1,5 +1,5 @@
 node("x2go") {
-  deleteDir
+  deleteDir()
   checkout scm
   stage("Generate Certificates to Sing Jars") {
       sh "mkdir -p client/java/certificate"
