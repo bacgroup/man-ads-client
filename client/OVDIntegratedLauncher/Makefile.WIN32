@@ -21,7 +21,7 @@ IS_WIN=$(findstring Win,$(OS))
 ifneq ($(IS_WIN),)
 	RM=del
 else
-	PREFIX?=i586-mingw32msvc-
+	PREFIX?=i686-w64-mingw32
 endif
 
 CC=$(PREFIX)gcc
