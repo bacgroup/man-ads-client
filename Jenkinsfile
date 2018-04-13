@@ -1,4 +1,4 @@
-node("x2go") {
+node("manukbuild001") {
   deleteDir()
   checkout scm
   stage("Create Certificates") {
