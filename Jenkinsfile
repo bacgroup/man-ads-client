@@ -14,8 +14,8 @@ node("manukbuild001") {
     }
     dir("client/java/jars") {
         sh "mv ../../../openjdk/* ."
-        sh "java -version"
-        //sh "java -jar packr.jar --platform linux64 --jdk java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64.zip --executable OVDNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output OVDNativeClient_linux64"
+        sh "unzip java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64.zip"
+        sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform linux64 --jdk openjdk-1.7.0-u80-unofficial-linux-amd64-installer.zip --executable OVDNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output OVDNativeClient_linux64"
         archiveArtifacts '*.jar'
     }
     dir("client/OVDIntegratedLauncher"){
