@@ -43,8 +43,9 @@ node("manukbuild001") {
      }
    )
    }
-    
-   archiveArtifacts 'OVDNativeClient_*.zip'
+   dir("client/java/jars") {
+       archiveArtifacts 'OVDNativeClient_*.zip'
+   }
 
     
     dir("client/OVDIntegratedLauncher"){
