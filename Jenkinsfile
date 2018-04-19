@@ -37,8 +37,8 @@ node("manukbuild001") {
        sh "zip -r OVDNativeClient_Windows32.zip OVDNativeClient_Windows32"
        },
      "Mac" : {
-       sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform mac --jdk openjdk-1.7.0-u80-unofficial-macosx-x86_64-image.zip --executable OVDNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output OVDNativeClient_mac"
-       sh "zip -r OVDNativeClient_mac.zip OVDNativeClient_mac"
+       sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform mac --jdk openjdk-1.7.0-u80-unofficial-macosx-x86_64-image.zip --executable OVDNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output OVDNativeClient_mac.app"
+       sh "zip -r OVDNativeClient_mac.zip OVDNativeClient_mac.app"
 
      }
    )
