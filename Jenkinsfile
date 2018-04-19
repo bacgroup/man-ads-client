@@ -13,7 +13,9 @@ node("manukbuild001") {
         sh "ant ovdIntegratedLauncher.jar"
     }
     dir("client/java/jars") {
-        sh "java -jar /home/jenkins/openjdk/packr.jar --platform windows32 --jdk /home/jenkins/openjdk/openjdk-1.7.0-u80-unofficial-windows-i586-image.zip --executable OVDNativeClient --classpath OVDNativeClient.jar --removelibs OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --minimizejre soft --output OVDNativeClient_windows32"
+        sh "cp -f /home/jenkins/openjdk/* ."
+      
+        sh "java -jar packr.jar --platform windows32 --jdk openjdk-1.7.0-u80-unofficial-windows-i586-image.zip --executable OVDNativeClient --classpath OVDNativeClient.jar --removelibs OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --minimizejre soft --output OVDNativeClient_windows32"
         archiveArtifacts '*.jar'
     }
     dir("client/OVDIntegratedLauncher"){
