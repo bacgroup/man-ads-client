@@ -34,6 +34,10 @@ node("x2go") {
      },
      "Windows32" : {
        sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform windows32 --jdk openjdk-1.7.0-u80-unofficial-windows-i586-image.zip --executable OVDNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output OVDNativeClient_Windows32"
+       sh "mv ../windlls.zip OVDNativeClient_Windows32"
+       dir("OVDNativeClient_Windows32") {
+         sh "unzip windlls.zip && rm -rf windlls.zip"
+       }
        sh "zip -r OVDNativeClient_Windows32.zip OVDNativeClient_Windows32"
        },
      "Mac" : {
@@ -45,6 +49,15 @@ node("x2go") {
    }
    dir("client/java/jars") {
        archiveArtifacts 'OVDNativeClient_*.zip'
+   }
+   
+   dir("client/java/jars") {
+   parallel (
+     "Windows64 Installer" : {
+     },
+     "Windows32 Installer" : {
+       }
+   )
    }
 
     
