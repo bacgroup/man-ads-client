@@ -68,12 +68,12 @@ node("x2go") {
    dir("client/java/jars") {
    parallel (
      "Windows64 Installer" : {
-       sh "msi-packager ADSNativeClient_Windows64/ ADSNativeClient_Windows64_Installer.msi -n  'ADS Native Client for Windows 64bit' -v "2.0" -m 'MAN CONSULTING LTD' -a 'x64' -u '34' -i ../icons/icon.ico -e ADSNativeClient.exe"
+       sh "msi-packager ADSNativeClient_Windows64/ ADSNativeClient_Windows64_Installer.msi -n  \"ADS Native Client for 64bit Windows\" -v 2.0 -m \"MAN CONSULTING LTD\" -a x64 -u 34 -i ../icons/icon.ico -e ADSNativeClient.exe"
 
      },
      "Windows32 Installer" : {
        
-       sh "msi-packager ADSNativeClient_Windows32/ ADSNativeClient_Windows32_Installer.msi -n  'ADS Native Client for Windows 32bits' -v "2.0" -m 'MAN CONSULTING LTD' -a 'x86' -u '34' -i ../icons/icon.ico -e ADSNativeClient.exe"
+       sh "msi-packager ADSNativeClient_Windows32/ ADSNativeClient_Windows32_Installer.msi -n  \"ADS Native Client for 32bits Windows \" -v 2.0 -m \"MAN CONSULTING LTD\" -a x86 -u 34 -i ../icons/icon.ico -e ADSNativeClient.exe"
        
        }
    )
