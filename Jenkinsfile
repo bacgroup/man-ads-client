@@ -51,7 +51,8 @@ node("x2go") {
     dir("client/OVDIntegratedLauncher"){
         sh "./autogen"
         sh "make"
-        archiveArtifacts 'UlteoOVDIntegratedLauncher'
+        sh "mv -f UlteoOVDIntegratedLauncher ADSIntegratedLauncher"
+        archiveArtifacts 'ADSIntegratedLauncher'
     }
   }
 }
