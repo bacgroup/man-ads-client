@@ -17,14 +17,24 @@ node("x2go") {
         sh "/usr/bin/unzip java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64.zip"
         archiveArtifacts '*.jar'
     }
+    
+    dir("client/OVDIntegratedLauncher"){
+        sh "./autogen"
+        sh "make"
+        sh "mv -f UlteoOVDIntegratedLauncher ADSIntegratedLauncher"
+        archiveArtifacts 'ADSIntegratedLauncher'
+    }
+    
    dir("client/java/jars") {
    parallel (
      "Linux64" : {
        sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform linux64 --jdk openjdk-1.7.0-u80-unofficial-linux-amd64-installer.zip --executable OVDNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_linux64"
+       sh "cp -r ../../OVDIntegratedLauncher/ADSIntegratedLauncher ."
        sh "zip -r ADSNativeClient_linux64.zip ADSNativeClient_linux64"
      },
      "Linux32" : {
        sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform linux32 --jdk openjdk-1.7.0-u80-unofficial-linux-i586-image.zip --executable OVDNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_linux32"
+       sh "cp -r ../../OVDIntegratedLauncher/ADSIntegratedLauncher ."
        sh "zip -r ADSNativeClient_linux32.zip ADSNativeClient_linux32"
 
        },
@@ -66,11 +76,6 @@ node("x2go") {
    }
 
     
-    dir("client/OVDIntegratedLauncher"){
-        sh "./autogen"
-        sh "make"
-        sh "mv -f UlteoOVDIntegratedLauncher ADSIntegratedLauncher"
-        archiveArtifacts 'ADSIntegratedLauncher'
-    }
+
   }
 }
