@@ -54,7 +54,7 @@ node("x2go") {
    dir("client/java/jars") {
        archiveArtifacts 'ADSNativeClient_*.zip'
    }
-   
+   stage("Installers & Package") {
    dir("client/java/jars") {
    parallel (
      "Windows64 Installer" : {
@@ -62,6 +62,7 @@ node("x2go") {
      "Windows32 Installer" : {
        }
    )
+   }
    }
 
     
