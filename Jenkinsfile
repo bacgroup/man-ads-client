@@ -30,6 +30,7 @@ node("x2go") {
        },
      "Windows64" : {
        sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform windows64 --jdk openjdk-1.7.0-u80-unofficial-windows-amd64-image.zip --executable OVDNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_Windows64"
+       sh "mv ../windlls.zip ADSNativeClient_Windows64"
        dir("ADSNativeClient_Windows64") {
          sh "unzip windlls.zip && rm -rf windlls.zip"
        }
