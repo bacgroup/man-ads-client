@@ -77,8 +77,8 @@ node("x2go") {
        
        }
    )
+   archiveArtifacts '*.msi'
    }
-            archiveArtifacts '*.msi'
 
    }
 
