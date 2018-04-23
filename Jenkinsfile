@@ -13,7 +13,7 @@ node("x2go") {
         sh "ant ovdIntegratedLauncher.jar"
     }
     dir("client/java/jars") {
-        sh "cp \$HOME/openjdk-10.0.1_*.zip ."
+        sh "cp \$HOME/linux-jre.zip ."
         sh "cp \$HOME/java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64.zip ."
         sh "cp \$HOME/packr.jar ."
         sh "/usr/bin/unzip java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64.zip"
@@ -30,7 +30,7 @@ node("x2go") {
    dir("client/java/jars") {
    parallel (
      "Linux64" : {
-       sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform linux64 --jdk openjdk-10.0.1_linux-x64_bin.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_linux64"
+       sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform linux64 --jdk linux-jre.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_linux64"
        sh "cp -r ../../OVDIntegratedLauncher/ADSIntegratedLauncher ."
        sh "zip -r ADSNativeClient_linux64.zip ADSNativeClient_linux64"
      },
@@ -41,7 +41,7 @@ node("x2go") {
 
        },*/
      "Windows64" : {
-       sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform windows64 --jdk openjdk-10.0.1_windows-x64_bin.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_Windows64"
+       sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform windows64 --jdk linux-jre.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_Windows64"
        sh "cp -r ../windlls.zip ADSNativeClient_Windows64"
        dir("ADSNativeClient_Windows64") {
          sh "unzip windlls.zip && rm -rf windlls.zip"
@@ -57,7 +57,7 @@ node("x2go") {
        sh "zip -r ADSNativeClient_Windows32.zip ADSNativeClient_Windows32"
        },*/
      "Mac" : {
-       sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform mac --jdk openjdk-10.0.1_osx-x64_bin.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_mac.app"
+       sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform mac --jdk linux-jre.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_mac.app"
        sh "zip -r ADSNativeClient_mac.zip ADSNativeClient_mac.app"
 
      }
