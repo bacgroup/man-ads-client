@@ -15,7 +15,7 @@ node("x2go") {
     dir("client/java/jars") {
         sh "cp \$HOME/openjdk-10.0.1_*.zip ."
         sh "cp \$HOME/java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64.zip ."
-        sh "\$HOME/packr.jar ."
+        sh "cp \$HOME/packr.jar ."
         sh "/usr/bin/unzip java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64.zip"
         archiveArtifacts '*.jar'
     }
