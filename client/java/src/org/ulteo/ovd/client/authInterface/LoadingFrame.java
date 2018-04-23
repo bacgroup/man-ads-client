@@ -90,7 +90,8 @@ public class LoadingFrame extends JDialog implements ActionListener {
 		this.jlabel = new JLabel(LoadingStatus.getMsg(LoadingStatus.SM_START));
 		
 		this.add(BorderLayout.NORTH, this.aJProgressBar);
-		//this.add(BorderLayout.LINE_END, this.cancel);
+		this.add(BorderLayout.LINE_END, this.cancel);
+		this.cancel.setVisible(false)
 		this.add(BorderLayout.SOUTH, this.jlabel);
 		this.pack();
 	}
