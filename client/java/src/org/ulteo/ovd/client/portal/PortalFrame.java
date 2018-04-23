@@ -81,7 +81,7 @@ public class PortalFrame extends OvdClientFrame {
 	
 	
 	public void init() {
-		this.setTitle("MAN Consulting OVD Remote Applications");
+		this.setTitle("MAN Application Delivery System ");
 		this.setSize(700, 400);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
