@@ -13,7 +13,8 @@ node("x2go") {
         sh "ant ovdIntegratedLauncher.jar"
     }
     dir("client/java/jars") {
-        sh "mv ../../../openjdk/* ."
+        sh "cp \$HOME/openjdk-10.0.1_*.zip ."
+        sh "cp \$HOME/java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64.zip ."
         sh "/usr/bin/unzip java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64.zip"
         archiveArtifacts '*.jar'
     }
@@ -28,24 +29,24 @@ node("x2go") {
    dir("client/java/jars") {
    parallel (
      "Linux64" : {
-       sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform linux64 --jdk openjdk-1.7.0-u80-unofficial-linux-amd64-installer.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_linux64"
+       sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform linux64 --jdk openjdk-10.0.1_linux-x64_bin.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_linux64"
        sh "cp -r ../../OVDIntegratedLauncher/ADSIntegratedLauncher ."
        sh "zip -r ADSNativeClient_linux64.zip ADSNativeClient_linux64"
      },
-     "Linux32" : {
+     /*"Linux32" : {
        sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform linux32 --jdk openjdk-1.7.0-u80-unofficial-linux-i586-image.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_linux32"
        sh "cp -r ../../OVDIntegratedLauncher/ADSIntegratedLauncher ."
        sh "zip -r ADSNativeClient_linux32.zip ADSNativeClient_linux32"
 
-       },
+       },*/
      "Windows64" : {
-       sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform windows64 --jdk openjdk-1.7.0-u80-unofficial-windows-amd64-image.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_Windows64"
+       sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform windows64 --jdk openjdk-10.0.1_windows-x64_bin.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_Windows64"
        sh "cp -r ../windlls.zip ADSNativeClient_Windows64"
        dir("ADSNativeClient_Windows64") {
          sh "unzip windlls.zip && rm -rf windlls.zip"
        }
        sh "zip -r ADSNativeClient_Windows64.zip ADSNativeClient_Windows64"
-     },
+     },/*
      "Windows32" : {
        sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform windows32 --jdk openjdk-1.7.0-u80-unofficial-windows-i586-image.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_Windows32"
        sh "cp -r ../windlls.zip ADSNativeClient_Windows32"
@@ -53,9 +54,9 @@ node("x2go") {
          sh "unzip windlls.zip && rm -rf windlls.zip"
        }
        sh "zip -r ADSNativeClient_Windows32.zip ADSNativeClient_Windows32"
-       },
+       },*/
      "Mac" : {
-       sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform mac --jdk openjdk-1.7.0-u80-unofficial-macosx-x86_64-image.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_mac.app"
+       sh "java-1.8.0-openjdk-1.8.0.161-3.b14.el6_9.x86_64/bin/java -jar packr.jar --platform mac --jdk openjdk-10.0.1_osx-x64_bin.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_mac.app"
        sh "zip -r ADSNativeClient_mac.zip ADSNativeClient_mac.app"
 
      }
@@ -70,12 +71,12 @@ node("x2go") {
      "Windows64 Installer" : {
        sh "msi-packager ADSNativeClient_Windows64/ ADSNativeClient_Windows64_Installer.msi -n  \"ADS Native Client for 64bit Windows\" -v 2.0 -m \"MAN CONSULTING LTD\" -a x64 -u 34 -i ../icons/icon.ico -e ADSNativeClient.exe"
 
-     },
+     }/*,
      "Windows32 Installer" : {
        
-       sh "msi-packager ADSNativeClient_Windows32/ ADSNativeClient_Windows32_Installer.msi -n  \"ADS Native Client for 32bits Windows \" -v 2.0 -m \"MAN CONSULTING LTD\" -a x86 -u 34 -i ../icons/icon.ico -e ADSNativeClient.exe"
+       sh "msi-packager ADSNativeClient_Windows32/ ADSNativeClient_Windows_Installer.msi -n  \"ADS Native Client for Windows \" -v 2.0 -m \"MAN CONSULTING LTD\" -a x86 -u 34 -i ../icons/icon.ico -e ADSNativeClient.exe"
        
-       }
+       }*/
    )
    archiveArtifacts '*.msi'
    }
