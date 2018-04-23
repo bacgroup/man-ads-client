@@ -91,7 +91,7 @@ public class LoadingFrame extends JDialog implements ActionListener {
 		
 		this.add(BorderLayout.NORTH, this.aJProgressBar);
 		this.add(BorderLayout.LINE_END, this.cancel);
-		this.cancel.setVisible(false);
+		//this.cancel.setVisible(false);
 		this.add(BorderLayout.SOUTH, this.jlabel);
 		this.pack();
 	}
