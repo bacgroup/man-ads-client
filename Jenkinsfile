@@ -9,6 +9,11 @@ node("x2go") {
   stage("Build") {
     dir("client/java/") {
         sh "./autogen"
+        sh "ant ovdNativeClient"
+        sh "cp -r ../windlls.zip build/resources"
+        dir("build/resources") {
+            sh "unzip windlls.zip && rm -rf windlls.zip"
+        }
         sh "ant ovdNativeClient.jar"
         sh "ant ovdIntegratedLauncher.jar"
     }
