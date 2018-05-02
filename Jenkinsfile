@@ -10,7 +10,7 @@ node("x2go") {
     dir("client/java/") {
         sh "./autogen"
         sh "ant ovdNativeClient"
-        sh "cp -r ../windlls.zip build/resources"
+        sh "cp -r windlls.zip build/resources"
         dir("build/resources") {
             sh "unzip windlls.zip && rm -rf windlls.zip"
         }
