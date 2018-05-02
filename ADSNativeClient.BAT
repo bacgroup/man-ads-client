@@ -1,1 +1,1 @@
-start javaw -jar OVDNativeClient.jar
+start java -jar OVDNativeClient.jar
