@@ -1,1 +1,2 @@
-start java -jar OVDNativeClient.jar
+@echo off
+call "java -jar OVDNativeClient.jar"
