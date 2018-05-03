@@ -47,6 +47,7 @@ node("x2go") {
        sh "cp -r ../windlls.zip ADSNativeClient_Windows64"
        dir("ADSNativeClient_Windows64") {
          sh "cp -r ../../../../ADSNativeClient.BAT ."
+         sh "cp -r ../../../../invisible.vbs ."
          sh "unzip windlls.zip && rm -rf windlls.zip"
        }
        sh "zip -r ADSNativeClient_Windows64.zip ADSNativeClient_Windows64"
@@ -56,6 +57,7 @@ node("x2go") {
        sh "cp -r ../windlls.zip ADSNativeClient_Windows32"
        dir("ADSNativeClient_Windows32") {
          sh "cp -r ../../../../ADSNativeClient.BAT ."
+         sh "cp -r ../../../../invisible.vbs ."
          sh "unzip windlls.zip && rm -rf windlls.zip"
        }
        sh "zip -r ADSNativeClient_Windows32.zip ADSNativeClient_Windows32"
@@ -74,12 +76,12 @@ node("x2go") {
    dir("client/java/jars") {
    parallel (
      "Windows64 Installer" : {
-       sh "msi-packager ADSNativeClient_Windows64/ ADSNativeClient_Windows64_Installer.msi -n  \"ADS Native Client for 64bit Windows\" -v 2.0 -m \"MAN CONSULTING LTD\" -a x64 -u 34 -i ../icons/icon.ico -e ADSNativeClient.BAT"
+       sh "msi-packager ADSNativeClient_Windows64/ ADSNativeClient_Windows64_Installer.msi -n  \"ADS Native Client for 64bit Windows\" -v 2.0 -m \"MAN CONSULTING LTD\" -a x64 -u 34 -i ../icons/icon.ico -e \"wscript.exe invisible.vbs ADSNativeClient.BAT\""
 
      },
      "Windows32 Installer" : {
        
-       sh "msi-packager ADSNativeClient_Windows32/ ADSNativeClient_Windows32_Installer.msi -n  \"ADS Native Client for 32bits Windows \" -v 2.0 -m \"MAN CONSULTING LTD\" -a x86 -u 34 -i ../icons/icon.ico -e ADSNativeClient.BAT"
+       sh "msi-packager ADSNativeClient_Windows32/ ADSNativeClient_Windows32_Installer.msi -n  \"ADS Native Client for 32bits Windows \" -v 2.0 -m \"MAN CONSULTING LTD\" -a x86 -u 34 -i ../icons/icon.ico -e \"wscript.exe invisible.vbs ADSNativeClient.BAT\""
        
 }
    )
