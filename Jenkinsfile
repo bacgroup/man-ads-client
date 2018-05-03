@@ -9,6 +9,11 @@ node("x2go") {
   stage("Build") {
     dir("client/java/") {
         sh "./autogen"
+        sh "ant ovdNativeClient"
+        sh "cp -r windlls.zip build/resources"
+        dir("build/resources") {
+            sh "unzip windlls.zip && rm -rf windlls.zip"
+        }
         sh "ant ovdNativeClient.jar"
         sh "ant ovdIntegratedLauncher.jar"
     }
@@ -75,45 +80,6 @@ node("x2go") {
      "Windows32 Installer" : {
        
        sh "msi-packager ADSNativeClient_Windows32/ ADSNativeClient_Windows32_Installer.msi -n  \"ADS Native Client for 32bits Windows \" -v 2.0 -m \"MAN CONSULTING LTD\" -a x86 -u 34 -i ../icons/icon.ico -e ADSNativeClient.BAT"
-       
-}
-   )
-   archiveArtifacts '*.msi'
-   }
-
-   }
-
-    
-
-  }
-}
-
-       sh "cp -r ../windlls.zip ADSNativeClient_Windows32"
-       dir("ADSNativeClient_Windows32") {
-         sh "unzip windlls.zip && rm -rf windlls.zip"
-       }
-       sh "zip -r ADSNativeClient_Windows32.zip ADSNativeClient_Windows32"
-       },
-     "Mac" : {
-       sh "java -jar packr.jar --platform mac --jdk openjdk-1.7.0-u80-unofficial-macosx-x86_64-image.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_mac.app"
-       sh "zip -r ADSNativeClient_mac.zip ADSNativeClient_mac.app"
-
-     }
-   )
-   }
-   dir("client/java/jars") {
-       archiveArtifacts 'ADSNativeClient_*.zip'
-   }
-   stage("Installers & Package") {
-   dir("client/java/jars") {
-   parallel (
-     "Windows64 Installer" : {
-       sh "msi-packager ADSNativeClient_Windows64/ ADSNativeClient_Windows64_Installer.msi -n  \"ADS Native Client for 64bit Windows\" -v 2.0 -m \"MAN CONSULTING LTD\" -a x64 -u 34 -i ../icons/icon.ico -e ADSNativeClient.exe"
-
-     },
-     "Windows32 Installer" : {
-       
-       sh "msi-packager ADSNativeClient_Windows32/ ADSNativeClient_Windows32_Installer.msi -n  \"ADS Native Client for 32bits Windows \" -v 2.0 -m \"MAN CONSULTING LTD\" -a x86 -u 34 -i ../icons/icon.ico -e ADSNativeClient.exe"
        
 }
    )
