@@ -106,6 +106,6 @@ node("master") {
    deleteDir()
    unstash 'msi'
    sh "ls -l"
-   sh "curl -v -i -X POST -H \"Content-Type:application/json\" -H \"Authorization: token ${github_token}\" https://api.github.com/repos/bacgroup/man_ovd_client/releases -d '{\"tag_name\":\"man_ads_client_${BUILD_NUMBER}_${STAGE}\",\"target_commitish\": \"${BRANCH_NAME}\",\"name\": \"MAN OVD Client Build ${BUILD_NUMBER} ${STAGE}\",\"body\": \"MAN Consulting Software\",\"draft\": false,\"prerelease\": true}'"
-        sh "for i in *.msi; do bash $HOME/github-release.sh github_api_token=${github_token} owner=bacgroup repo=man_ovd_client tag=man_ads_client_${BUILD_NUMBER}_${STAGE} filename=./\$i; done"
+   sh "curl -v -i -X POST -H \"Content-Type:application/json\" -H \"Authorization: token ${github_token}\" https://api.github.com/repos/bacgroup/man_ads_client/releases -d '{\"tag_name\":\"man_ads_client_${BUILD_NUMBER}_${STAGE}\",\"target_commitish\": \"${BRANCH_NAME}\",\"name\": \"MAN OVD Client Build ${BUILD_NUMBER} ${STAGE}\",\"body\": \"MAN Consulting Software\",\"draft\": false,\"prerelease\": true}'"
+        sh "for i in *.msi; do bash $HOME/github-release.sh github_api_token=${github_token} owner=bacgroup repo=man_ads_client tag=man_ads_client_${BUILD_NUMBER}_${STAGE} filename=./\$i; done"
 }
