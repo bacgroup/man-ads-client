@@ -171,7 +171,7 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 		this.optionClicked = false;
 
 		this.setVisible(false);
-		this.setTitle("MAN ADS Native Client");
+		this.setTitle("MAN Application Delivery System ");
 		this.setSize(500,450);
 		this.setResizable(false);
 		this.setBackground(Color.WHITE);
