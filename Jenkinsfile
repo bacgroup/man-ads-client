@@ -83,6 +83,6 @@ node("x2go") {
 node("master") {
    deleteDir()
    unstash 'msi'
-   sh "curl -v -i -X POST -H \"Content-Type:application/json\" -H \"Authorization: token ${github_token}\" https://api.github.com/repos/bacgroup/man-ads-client/releases releases -d '{\"tag_name\":\"man_ads_client_${BUILD_NUMBER}\",\"target_commitish\": \"${BRANCH_NAME}\",\"name\": \"MAN ADS Client Build ${BUILD_NUMBER}\",\"body\": \"MAN Consulting Software\",\"draft\": false,\"prerelease\": true}'"
+   sh "curl -v -i -X POST -H \"Content-Type:application/json\" -H \"Authorization: token ${github_token}\" https://api.github.com/repos/bacgroup/man-ads-client/releases -d '{\"tag_name\":\"man_ads_client_${BUILD_NUMBER}\",\"target_commitish\": \"${BRANCH_NAME}\",\"name\": \"MAN ADS Client Build ${BUILD_NUMBER}\",\"body\": \"MAN Consulting Software\",\"draft\": false,\"prerelease\": true}'"
    sh "for i in *.msi; do bash $HOME/github-release.sh github_api_token=${github_token} owner=bacgroup repo=man-ads-client tag=man_ads_client_${BUILD_NUMBER} filename=./\$i; done"
 }
