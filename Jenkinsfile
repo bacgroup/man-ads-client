@@ -42,25 +42,15 @@ node("x2go") {
        sh "zip -r ADSNativeClient_linux32.zip ADSNativeClient_linux32"
 
        },
-     "Windows64" : {
-       sh "java -jar packr.jar --platform windows64 --jdk openjdk-1.7.0-u80-unofficial-windows-amd64-image.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_Windows64"
-       sh "cp -r ../windlls.zip ADSNativeClient_Windows64"
-       dir("ADSNativeClient_Windows64") {
+     "Windows" : {
+       sh "java -jar packr.jar --platform windows32 --jdk openjdk-1.7.0-u80-unofficial-windows-i586-image.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_Windows"
+       sh "cp -r ../windlls.zip ADSNativeClient_Windows"
+       dir("ADSNativeClient_Windows") {
          sh "cp -r ../../../../ADSNativeClient.BAT ."
          sh "cp -r ../../../../invisible.vbs ."
          sh "unzip windlls.zip && rm -rf windlls.zip"
        }
-       sh "zip -r ADSNativeClient_Windows64.zip ADSNativeClient_Windows64"
-     },
-     "Windows32" : {
-       sh "java -jar packr.jar --platform windows32 --jdk openjdk-1.7.0-u80-unofficial-windows-i586-image.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_Windows32"
-       sh "cp -r ../windlls.zip ADSNativeClient_Windows32"
-       dir("ADSNativeClient_Windows32") {
-         sh "cp -r ../../../../ADSNativeClient.BAT ."
-         sh "cp -r ../../../../invisible.vbs ."
-         sh "unzip windlls.zip && rm -rf windlls.zip"
-       }
-       sh "zip -r ADSNativeClient_Windows32.zip ADSNativeClient_Windows32"
+       sh "zip -r ADSNativeClient_Windows.zip ADSNativeClient_Windows"
        },
      "Mac" : {
        sh "java -jar packr.jar --platform mac --jdk openjdk-1.7.0-u80-unofficial-macosx-x86_64-image.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_mac.app"
@@ -69,20 +59,14 @@ node("x2go") {
      }
    )
    }
-   dir("client/java/jars") {
+   /* dir("client/java/jars") {
        archiveArtifacts 'ADSNativeClient_*.zip'
-   }
+   }*/
    stage("Installers & Package") {
    dir("client/java/jars") {
    parallel (
-     "Windows64 Installer" : {
-       sh "msi-packager ADSNativeClient_Windows64/ ADSNativeClient_Windows64_Installer.msi -n  \"ADS Native Client for 64bit Windows\" -v 2.0 -m \"MAN CONSULTING LTD\" -a x64 -u 34 -i ../icons/icon.ico -e invisible.vbs"
-
-     },
-     "Windows32 Installer" : {
-       
-       sh "msi-packager ADSNativeClient_Windows32/ ADSNativeClient_Windows32_Installer.msi -n  \"ADS Native Client for 32bits Windows \" -v 2.0 -m \"MAN CONSULTING LTD\" -a x86 -u 34 -i ../icons/icon.ico -e invisible.vbs"
-       
+     "Windows Installer" : {
+       sh "msi-packager ADSNativeClient_Windows/ ADSNativeClient_Installer.msi -n  \"MAN Application Delivery System\" -v 2.0 -m \"MAN CONSULTING LTD\" -a x86 -u 34 -i ../icons/icon.ico -e invisible.vbs"    
 }
    )
    archiveArtifacts '*.msi'
