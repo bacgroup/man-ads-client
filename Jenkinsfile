@@ -53,17 +53,18 @@ node("x2go") {
     
    dir("client/java/jars") {
    parallel (
-     "Linux64" : {
-       sh "java -jar packr.jar --platform linux64 --jdk openjdk-1.7.0-u80-unofficial-linux-amd64-installer.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_linux64"
-       sh "cp -r ../../OVDIntegratedLauncher/ADSIntegratedLauncher ."
-       sh "zip -r ADSNativeClient_linux64.zip ADSNativeClient_linux64"
+     "Linux" : {
+       sh "java -jar packr.jar --platform linux64 --jdk openjdk-1.7.0-u80-unofficial-linux-amd64-installer.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_linux"
+       sh "cp -r ../../OVDIntegratedLauncher/ADSIntegratedLauncher ADSNativeClient_linux/"
+       sh "zip -r ADSNativeClient_linux.zip ADSNativeClient_linux"
+       sh 'javapackager -deploy -native installer -outdir packages -outfile ADSNativeClient -srcfiles OVDNativeClient.jar -appclass org.ulteo.ovd.client.NativeClient  -name "MAN ADS Client" -title "MAN ADS Client" -BappVersion=2.1 -Bicon=../icons/icon.png'
      },
-     "Linux32" : {
+     /* "Linux32" : {
        sh "java -jar packr.jar --platform linux32 --jdk openjdk-1.7.0-u80-unofficial-linux-i586-image.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_linux32"
        sh "cp -r ../../OVDIntegratedLauncher/ADSIntegratedLauncher ."
        sh "zip -r ADSNativeClient_linux32.zip ADSNativeClient_linux32"
 
-       },
+       },*/
      "Windows" : {
        sh "java -jar packr.jar --platform windows32 --jdk openjdk-1.7.0-u80-unofficial-windows-i586-image.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_Windows"
        sh "cp -r ../windlls.zip ADSNativeClient_Windows"
