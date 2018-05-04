@@ -98,9 +98,10 @@ node("x2go") {
    dir("client/java/jars/packages/bundles/"){
        archiveArtifacts '*.deb'
        archiveArtifacts '*.rpm'
+       stash allowEmpty: true, includes: '*.deb', name: 'deb', useDefaultExcludes: false
+       stash allowEmpty: true, includes: '*.rpm', name: 'rpm', useDefaultExcludes: false
        }
-    stash allowEmpty: true, includes: '*.deb', name: 'deb', useDefaultExcludes: false
-    stash allowEmpty: true, includes: '*.rpm', name: 'rpm', useDefaultExcludes: false
+
 
 
    }
