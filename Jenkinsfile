@@ -95,6 +95,14 @@ node("x2go") {
    )
    archiveArtifacts '*.msi'
    stash allowEmpty: true, includes: '*.msi', name: 'msi', useDefaultExcludes: false
+   dir("client/java/jars/packages/bundles/"){
+       archiveArtifacts '*.deb'
+       archiveArtifacts '*.rpm'
+       }
+    stash allowEmpty: true, includes: '*.deb', name: 'deb', useDefaultExcludes: false
+    stash allowEmpty: true, includes: '*.rpm', name: 'rpm', useDefaultExcludes: false
+
+
    }
 
    }
@@ -106,7 +114,13 @@ node("x2go") {
 node("master") {
    deleteDir()
    unstash 'msi'
+   unstash 'deb'
+   unstash 'rpm'
+
    sh "ls -l"
    sh "curl -v -i -X POST -H \"Content-Type:application/json\" -H \"Authorization: token ${github_token}\" https://api.github.com/repos/bacgroup/man_ads_client/releases -d '{\"tag_name\":\"man_ads_client_${BUILD_NUMBER}_${STAGE}\",\"target_commitish\": \"${BRANCH_NAME}\",\"name\": \" MAN Consulting Application Delivery System Build ${BUILD_NUMBER} ${STAGE}\",\"body\": \"MAN Consulting Software\",\"draft\": false,\"prerelease\": true}'"
-        sh "for i in *.msi; do bash $HOME/github-release.sh github_api_token=${github_token} owner=bacgroup repo=man_ads_client tag=man_ads_client_${BUILD_NUMBER}_${STAGE} filename=./\$i; done"
+   sh "for i in *.msi; do bash $HOME/github-release.sh github_api_token=${github_token} owner=bacgroup repo=man_ads_client tag=man_ads_client_${BUILD_NUMBER}_${STAGE} filename=./\$i; done"
+   sh "for i in *.deb; do bash $HOME/github-release.sh github_api_token=${github_token} owner=bacgroup repo=man_ads_client tag=man_ads_client_${BUILD_NUMBER}_${STAGE} filename=./\$i; done"
+   sh "for i in *.rpm; do bash $HOME/github-release.sh github_api_token=${github_token} owner=bacgroup repo=man_ads_client tag=man_ads_client_${BUILD_NUMBER}_${STAGE} filename=./\$i; done"
+
 }
