@@ -95,7 +95,7 @@ node("x2go") {
    )
    archiveArtifacts '*.msi'
    stash allowEmpty: true, includes: '*.msi', name: 'msi', useDefaultExcludes: false
-   dir("client/java/jars/packages/bundles/"){
+   dir("packages/bundles/"){
        archiveArtifacts '*.deb'
        archiveArtifacts '*.rpm'
        stash allowEmpty: true, includes: '*.deb', name: 'deb', useDefaultExcludes: false
