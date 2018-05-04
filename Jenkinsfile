@@ -67,7 +67,7 @@ node("x2go") {
    dir("client/java/jars") {
    parallel (
      "Windows Installer" : {
-       sh "msi-packager ADSNativeClient_Windows/ ADSNativeClient_Installer.msi -n  \"MAN Application Delivery System\" -v 2.0 -m \"MAN CONSULTING LTD\" -a x86 -u 34 -i ../icons/icon.ico -e invisible.vbs"    
+       sh "msi-packager ADSNativeClient_Windows/ ADSNativeClient_Installer.msi -n  \"MAN Application Delivery System\" -v 2.1 -m \"MAN CONSULTING LTD\" -a x86 -u 34 -i ../icons/icon.ico -e invisible.vbs"    
 }
    )
    archiveArtifacts '*.msi'
