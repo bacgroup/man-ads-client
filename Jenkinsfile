@@ -59,7 +59,7 @@ node("x2go") {
        sh "mkdir linuxbuild"
        sh "cp -r ../../OVDIntegratedLauncher/ADSIntegratedLauncher linuxbuild/"
        sh "cp -r OVDNativeClient.jar linuxbuild/"
-       sh 'javapackager -deploy -native installer -outdir packages -outfile ADSNativeClient -srcdir linuxbuild -appclass org.ulteo.ovd.client.NativeClient  -name "MAN ADS Client" -title "MAN ADS Client" -BappVersion=2.1 -Bicon=../icons/icon.png'
+       sh 'javapackager -deploy -native installer -outdir packages -outfile ADSNativeClient -srcdir linuxbuild -appclass org.ulteo.ovd.client.NativeClient  -name "MAN ADS Native Client" -title "MAN ADS Native Client" -BappVersion=2.1 -Bicon=../icons/icon.png'
      },
      /* "Linux32" : {
        sh "java -jar packr.jar --platform linux32 --jdk openjdk-1.7.0-u80-unofficial-linux-i586-image.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_linux32"
