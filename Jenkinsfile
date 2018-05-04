@@ -50,6 +50,7 @@ node("x2go") {
          sh "cp -r ../../../../invisible.vbs ."
          sh "unzip windlls.zip && rm -rf windlls.zip"
        }
+       sh "rm -rf ADSNativeClient_Windows/{jre,ADSNativeClient.exe,config.json}"
        sh "zip -r ADSNativeClient_Windows.zip ADSNativeClient_Windows"
        },
      "Mac" : {
