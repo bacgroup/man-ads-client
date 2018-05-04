@@ -19,14 +19,14 @@ node("x2go") {
     }
     dir("client/java/jars") {
         sh "mv ../../../openjdk/* ."
-        archiveArtifacts '*.jar'
+        //archiveArtifacts '*.jar'
     }
     
     dir("client/OVDIntegratedLauncher"){
         sh "./autogen"
         sh "make"
         sh "mv -f UlteoOVDIntegratedLauncher ADSIntegratedLauncher"
-        archiveArtifacts 'ADSIntegratedLauncher'
+        //archiveArtifacts 'ADSIntegratedLauncher'
     }
     
    dir("client/java/jars") {
