@@ -54,9 +54,9 @@ node("x2go") {
    dir("client/java/jars") {
    parallel (
      "Linux" : {
-       sh "java -jar packr.jar --platform linux64 --jdk openjdk-1.7.0-u80-unofficial-linux-amd64-installer.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_linux"
+       /* sh "java -jar packr.jar --platform linux64 --jdk openjdk-1.7.0-u80-unofficial-linux-amd64-installer.zip --executable ADSNativeClient --classpath OVDNativeClient.jar --mainclass org.ulteo.ovd.client.NativeClient --output ADSNativeClient_linux"
        sh "cp -r ../../OVDIntegratedLauncher/ADSIntegratedLauncher ADSNativeClient_linux/"
-       sh "zip -r ADSNativeClient_linux.zip ADSNativeClient_linux"
+       sh "zip -r ADSNativeClient_linux.zip ADSNativeClient_linux" */
        sh 'javapackager -deploy -native installer -outdir packages -outfile ADSNativeClient -srcfiles OVDNativeClient.jar -appclass org.ulteo.ovd.client.NativeClient  -name "MAN ADS Client" -title "MAN ADS Client" -BappVersion=2.1 -Bicon=../icons/icon.png'
      },
      /* "Linux32" : {
