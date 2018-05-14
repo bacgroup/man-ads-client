@@ -41,7 +41,7 @@ node("x2go") {
     }
     dir("client/java/jars") {
         sh "mv ../../../openjdk/* ."
-        //archiveArtifacts '*.jar'
+        archiveArtifacts '*.jar'
     }
     
     dir("client/OVDIntegratedLauncher"){
