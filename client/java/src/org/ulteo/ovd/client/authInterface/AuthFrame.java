@@ -141,8 +141,8 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 		this.jobsList = new CopyOnWriteArrayList<Integer>();
 		
 		Object[] items = new Object[3];
-		items[0] = this.itemModeAuto;
-		items[1] = this.itemModeApplication;
+		//items[0] = this.itemModeAuto;
+		//items[1] = this.itemModeApplication;
 		items[2] = this.itemModeDesktop;
 		this.sessionModeBox = new JComboBox(items);
 		this.sessionModeBox.setRenderer(new JComboBoxItem(""));
@@ -1045,8 +1045,8 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 			this.language.setText(I18n._("Language"));
 			this.keyboard.setText(I18n._("Keyboard"));
 
-			this.itemModeAuto.setText(I18n._("Auto"));
-			this.itemModeApplication.setText(I18n._("Application"));
+			//this.itemModeAuto.setText(I18n._("Auto"));
+			//this.itemModeApplication.setText(I18n._("Application"));
 			this.itemModeDesktop.setText(I18n._("Desktop"));
 			this.rememberMe.setText(I18n._("Remember me"));
 			this.autoPublish.setText(I18n._("Auto-publish shortcuts"));
