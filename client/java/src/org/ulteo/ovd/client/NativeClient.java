@@ -882,8 +882,9 @@ public class NativeClient implements ActionListener, Runnable, org.ulteo.ovd.sm.
 		timeout.cancel();
 		
 		if (! this.opts.autostart) {
-			if (! is_user_deconnection)
-				//SwingTools.invokeLater(GUIActions.createDialog(I18n._("You have been disconnected"), I18n._("Your session has ended"), JOptionPane.INFORMATION_MESSAGE, JOptionPane.CLOSED_OPTION));
+			/* if (! is_user_deconnection)
+				SwingTools.invokeLater(GUIActions.createDialog(I18n._("You have been disconnected"), I18n._("Your session has ended"), JOptionPane.INFORMATION_MESSAGE, JOptionPane.CLOSED_OPTION));
+				*/
 		} else {
 			Logger.debug("You have been disconnected");
 			System.exit(RETURN_CODE_SUCCESS);
