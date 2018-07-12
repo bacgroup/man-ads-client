@@ -369,7 +369,7 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 			gbc.insets.top = 25;
 			gbc.gridx = 3;
 			gbc.gridy = 15;
-			//this.add(moreOption, gbc);
+			this.add(moreOption, gbc);
 			this.add(startButton, gbc);
 		}
 		
