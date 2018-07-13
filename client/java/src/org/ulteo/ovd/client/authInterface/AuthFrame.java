@@ -537,8 +537,8 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 
 		componentList = new ArrayList<Component>();
 		List<GridBagConstraints> gbcToAdd = new ArrayList<GridBagConstraints>();
-		
-		if (this.sessionModeBox.getSelectedItem() == this.itemModeApplication) {	
+		try {
+	                if (this.sessionModeBox.getSelectedItem() == this.itemModeApplication) {	
 			gbc.gridx = 2;
 			gbc.gridy = 11;
 			gbc.gridwidth = 2;
@@ -547,9 +547,11 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 			componentList.add(this.autoPublish);
                         //this.autoPublish.setVisible(false);
 			gbcToAdd.add((GridBagConstraints) gbc.clone());
-		}
-		
-		else if (this.sessionModeBox.getSelectedItem() == this.itemModeDesktop) {
+		        }	
+		    }
+                    catch (Exception e) {
+		    }
+		if (this.sessionModeBox.getSelectedItem() == this.itemModeDesktop) {
 			gbc.insets.left = 0;
 			gbc.gridx = 1;
 			gbc.gridy = 11;
