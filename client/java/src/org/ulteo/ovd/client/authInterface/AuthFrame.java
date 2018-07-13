@@ -119,8 +119,8 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 	private JLabel language = new JLabel();
 	private JLabel keyboard = new JLabel();
 	private JComboBox sessionModeBox = null;
-	private JComboBoxItem itemModeAuto = new JComboBoxItem();
-	private JComboBoxItem itemModeApplication = new JComboBoxItem();
+	//private JComboBoxItem itemModeAuto = new JComboBoxItem();
+	//private JComboBoxItem itemModeApplication = new JComboBoxItem();
 	private JComboBoxItem itemModeDesktop = new JComboBoxItem();
 	private JSlider resBar = null;
 	private JLabel resolutionValue = null;
@@ -140,9 +140,9 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 
 		this.jobsList = new CopyOnWriteArrayList<Integer>();
 		
-		Object[] items = new Object[3];
-		items[2] = this.itemModeDesktop;
-		items[1] = this.itemModeDesktop;
+		Object[] items = new Object[0];
+		//items[2] = this.itemModeDesktop;
+		//items[1] = this.itemModeDesktop;
 		items[0] = this.itemModeDesktop;
 		this.sessionModeBox = new JComboBox(items);
 		this.sessionModeBox.setRenderer(new JComboBoxItem(""));
@@ -1046,8 +1046,8 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 			this.language.setText(I18n._("Language"));
 			this.keyboard.setText(I18n._("Keyboard"));
 
-			this.itemModeAuto.setText(I18n._("Auto"));
-			this.itemModeApplication.setText(I18n._("Application"));
+			//this.itemModeAuto.setText(I18n._("Auto"));
+			//this.itemModeApplication.setText(I18n._("Application"));
 			this.itemModeDesktop.setText(I18n._("Desktop"));
 			this.rememberMe.setText(I18n._("Remember me"));
 			this.autoPublish.setText(I18n._("Auto-publish shortcuts"));
