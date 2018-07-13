@@ -1042,6 +1042,7 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 		if (! isGUILocked) {
 			this.host.setText(I18n._("Server"));
 			this.mode.setText(I18n._("Mode"));
+			this.mode.setVisible(false);
 			this.resolution.setText(I18n._("Resolution"));
 			this.language.setText(I18n._("Language"));
 			this.keyboard.setText(I18n._("Keyboard"));
