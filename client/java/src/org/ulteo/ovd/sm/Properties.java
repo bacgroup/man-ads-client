@@ -33,7 +33,7 @@ public class Properties {
 	public static final int REDIRECT_DRIVES_PARTIAL = 1;
 	public static final int REDIRECT_DRIVES_FULL = 2;
 	
-	private int mode = 0;
+	private int mode = 1;
 	private String lang = null;
 	private String username = null;
 	private String timeZone = null;
