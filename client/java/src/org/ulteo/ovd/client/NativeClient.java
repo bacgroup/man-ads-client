@@ -375,7 +375,7 @@ public class NativeClient implements ActionListener, Runnable, org.ulteo.ovd.sm.
 			}
 
 			if (opts.sessionMode == -1) {
-				opts.sessionMode = Properties.MODE_ANY;
+				opts.sessionMode = Properties.MODE_DESKTOP;
 			}
 		}
 
