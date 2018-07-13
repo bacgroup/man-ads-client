@@ -977,10 +977,11 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 		}
 
 		private void init(AuthFrame authFrame_) {
+			authFrame_.mode.setVisible(false);
 			this.components = new ArrayList<Component>();
 
 			this.components.add(authFrame_.optionLogoLabel);
-			//this.components.add(authFrame_.mode);
+			this.components.add(authFrame_.mode);
 			this.components.add(authFrame_.resolution);
 			this.components.add(authFrame_.language);
 			this.components.add(authFrame_.keyboard);
