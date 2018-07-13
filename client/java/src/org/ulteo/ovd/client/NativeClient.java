@@ -836,10 +836,10 @@ public class NativeClient implements ActionListener, Runnable, org.ulteo.ovd.sm.
 			case Properties.MODE_DESKTOP:
 				client = new OvdClientNativeDesktop(dialog, this.loadingFrame, this.opts.geometry, response.isPersistent());
 				break;
-			case Properties.MODE_REMOTEAPPS:
+			/* case Properties.MODE_REMOTEAPPS:
 				client = new OvdClientPortal(dialog, this.loadingFrame, response.getUsername(), this.opts.autopublish, response.isDesktopIcons(), this.opts.autostart, this.opts.isBugReporterVisible, response.isPersistent());
 				((OvdClientPortal) client).setSeamlessDebugEnabled(this.opts.debugSeamless);
-				break;
+				break;*/
 			default:
 				throw new UnsupportedOperationException(I18n._("Internal error: unsupported session mode"));
 		}
