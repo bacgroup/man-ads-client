@@ -25,8 +25,8 @@ package org.ulteo.ovd.sm;
 import org.ulteo.rdp.RdpConnectionOvd;
 
 public class Properties {
-	public static final int MODE_ANY = 0;
-	public static final int MODE_DESKTOP = 1;
+	public static final int MODE_ANY = 1;
+	public static final int MODE_DESKTOP = 0;
 	public static final int MODE_REMOTEAPPS = 2;
 
 	public static final int REDIRECT_DRIVES_NO = 0;
