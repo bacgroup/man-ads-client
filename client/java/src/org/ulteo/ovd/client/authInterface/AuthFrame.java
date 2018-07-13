@@ -807,10 +807,10 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 		return this.sessionModeBox;
 	}
 	public JLabel getItemModeApplication() {
-		return this.itemModeApplication;
+		return this.itemModeDesktop;
 	}
 	public JLabel getItemModeAuto() {
-		return this.itemModeAuto;
+		return this.itemModeDesktop;
 	}
 	public JLabel getItemModeDesktop() {
 		return this.itemModeDesktop;
