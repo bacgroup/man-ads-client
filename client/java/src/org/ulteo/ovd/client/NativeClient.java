@@ -726,7 +726,7 @@ public class NativeClient implements ActionListener, Runnable, org.ulteo.ovd.sm.
 			if (u.getPort() != -1)
 				this.opts.port = u.getPort();
 
-			this.opts.sessionMode =  Properties.MODE_ANY;
+			this.opts.sessionMode =  Properties.MODE_DESKTOP;
 			if (this.authFrame.getSessionModeBox().getSelectedItem() == this.authFrame.getItemModeApplication())
 				this.opts.sessionMode = Properties.MODE_REMOTEAPPS;
 			else if (this.authFrame.getSessionModeBox().getSelectedItem() == this.authFrame.getItemModeDesktop())
