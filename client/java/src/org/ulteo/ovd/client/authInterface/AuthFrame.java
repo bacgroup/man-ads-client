@@ -139,7 +139,7 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 		this.showBugReporter = showBugReporter_;
 
 		this.jobsList = new CopyOnWriteArrayList<Integer>();
-		
+		this.itemModeAuto.setVisible(false);
 		Object[] items = new Object[3];
 		items[2] = this.itemModeAuto;
 		items[1] = this.itemModeApplication;
