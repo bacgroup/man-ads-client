@@ -144,7 +144,9 @@ public class AuthFrame extends JFrame implements ActionListener, Runnable {
 		items[2] = this.itemModeAuto;
 		items[1] = this.itemModeApplication;
 		items[0] = this.itemModeDesktop;
-		this.sessionModeBox = new JComboBox(items);
+		Object[] items_list = new Object[1];
+		items_list[0] = this.itemModeDesktop;
+		this.sessionModeBox = new JComboBox(items_list);
 		this.sessionModeBox.setRenderer(new JComboBoxItem(""));
 		this.sessionModeBox.addActionListener(this);
 		
